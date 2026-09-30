@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/r/sample-four-day",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Axial",
+      "hasCanvas": false,
+      "bodyTextLen": 1613,
+      "bodyTextHash": "2d594e6d56e28ac4e1b069e5ff6d12fe4a59a7a6b8ac8630bf66c3b3f9160ee1",
+      "bodyTextPrefix": "Axial Briefing Copy REFERENCE BRIEFING Four-day week at Northlin",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/roadmap-page.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Axial",
+      "hasCanvas": false,
+      "bodyTextLen": 1613,
+      "bodyTextHash": "2d594e6d56e28ac4e1b069e5ff6d12fe4a59a7a6b8ac8630bf66c3b3f9160ee1",
+      "bodyTextPrefix": "Axial Briefing Copy REFERENCE BRIEFING Four-day week at Northlin",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/roadmap-page-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/roadmap-page.json"
+}

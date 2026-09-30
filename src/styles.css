@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0b;
+  --color-foreground: #eef0f3;
+  --color-surface: #141417;
+  --color-surface-2: #1c1c21;
+  --color-muted: #9aa3b0;
+  --color-subtle: #6d7480;
+  --color-primary: #c5ccd6;
+  --color-primary-fg: #0a0a0b;
+  --color-border: rgb(238 240 243 / 0.1);
+  --color-border-strong: rgb(238 240 243 / 0.18);
+  --color-ring: #c5ccd6;
+  --color-sage: #7d9a86;
+  --color-sand: #c4a574;
+  --color-clay: #c17b73;
+  --color-card: #141417;
+  --color-card-foreground: #eef0f3;
+  --color-popover: #141417;
+  --color-popover-foreground: #eef0f3;
+  --color-secondary: #1c1c21;
+  --color-secondary-foreground: #eef0f3;
+  --color-accent: #1c1c21;
+  --color-accent-foreground: #eef0f3;
+  --color-destructive: #c17b73;
+  --color-input: rgb(238 240 243 / 0.1);
+  --color-muted-foreground: #9aa3b0;
+
+  --font-sans: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius: 12px;
+
+  --shadow-border: 0 0 0 1px rgb(238 240 243 / 0.08);
+  --shadow-border-hover: 0 0 0 1px rgb(238 240 243 / 0.14);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-primary) 28%, transparent);
+    color: var(--color-foreground);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .shadow-border {
+    box-shadow: var(--shadow-border);
+  }
+
+  .shadow-border-hover {
+    box-shadow: var(--shadow-border-hover);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

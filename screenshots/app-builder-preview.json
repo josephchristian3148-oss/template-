@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Axial",
+      "hasCanvas": false,
+      "bodyTextLen": 1327,
+      "bodyTextHash": "767098f29a8047308f6d5ce97eca35617b556cbe9f8a5c6fa1bbd9e3aa353d02",
+      "bodyTextPrefix": "Axial Six agents · six dimensions MULTIDIMENSIONAL IMPACT ROADMA",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Axial",
+      "hasCanvas": false,
+      "bodyTextLen": 1299,
+      "bodyTextHash": "80a9db1dfbf1528efbc0ae0259ad2a90e01cfaa737f752ed407db789f48c8bde",
+      "bodyTextPrefix": "Axial MULTIDIMENSIONAL IMPACT ROADMAP See every dimension of the",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

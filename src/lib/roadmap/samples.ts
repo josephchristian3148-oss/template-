@@ -1,0 +1,873 @@
+import type { Roadmap } from "./types";
+
+export const SAMPLES: Roadmap[] = [
+  {
+    id: "sample-four-day",
+    title: "Four-day week at Northline",
+    thesis:
+      "Compress the calendar to keep the people who already know the product — but only after coverage is redesigned, not before.",
+    source: "sample",
+    createdAt: "2026-03-12T10:00:00.000Z",
+    briefing: {
+      initiative:
+        "Move a 180-person B2B SaaS company from a five-day week to a company-default four-day week within twelve months.",
+      context:
+        "Northline sells workflow software to mid-market operations teams. Mixed SF office and remote. Attrition 22%. Support NPS 31. Enterprise contracts require 24-hour response. Two failed 'no-meeting Wednesday' experiments.",
+      planHorizon: "12m",
+      nonNegotiable: "Do not break enterprise SLAs or the Q3 expansion number.",
+    },
+    dimensions: [
+      {
+        id: "customer",
+        current: 6.2,
+        projected: 5.8,
+        summary:
+          "Coverage risk is real. Customers will not feel a cultural win; they will feel a slower ticket if the roster is amateur.",
+      },
+      {
+        id: "revenue",
+        current: 5.4,
+        projected: 5.6,
+        summary:
+          "Near-term revenue is flat. The bet is retained account knowledge, not a pricing story. Do not sell the week as a feature.",
+      },
+      {
+        id: "operations",
+        current: 4.1,
+        projected: 6.8,
+        summary:
+          "Calendar compression forces ruthless prioritization. It also concentrates load on support, sales engineers, and on-call.",
+      },
+      {
+        id: "people",
+        current: 4.8,
+        projected: 8.4,
+        summary:
+          "This is the actual prize: stop losing senior ICs to companies that already run a shorter week.",
+      },
+      {
+        id: "risk",
+        current: 6.0,
+        projected: 4.3,
+        summary:
+          "SLA, key-person, and 'hidden Saturday work' are the failure modes. A four-day week that becomes a five-day week in disguise is worse than the status quo.",
+      },
+      {
+        id: "optionality",
+        current: 3.9,
+        projected: 6.5,
+        summary:
+          "Employer brand and hiring in competitive markets open. Geographic follow-the-sun coverage becomes a real option, not a slide.",
+      },
+    ],
+    agents: [
+      {
+        agentId: "atlas",
+        verdict:
+          "Customers did not ask for this. They asked for faster answers from people who remember their account. Protect that, or the week is a vanity project.",
+        findings: [
+          "Enterprise buyers will audit response times for 90 days after any calendar change.",
+          "The accounts most at risk are the eight with a single named CSM.",
+          "A public 'we work less' narrative will be read as 'you care less' unless coverage is visible.",
+        ],
+        tensions: [
+          "Hearth wants a company-wide default. Atlas wants named coverage before any default is announced.",
+        ],
+        confidence: 0.78,
+      },
+      {
+        agentId: "forge",
+        verdict:
+          "Do not model this as a productivity miracle. Model it as a retention hedge on $2.1M of fully loaded senior IC cost.",
+        findings: [
+          "Replacing a principal engineer at Northline takes 7 months fully loaded.",
+          "No pricing power is created. Do not attach the week to a SKU or a brand campaign in year one.",
+          "If output per person drops more than 8% in billed professional services, the economics invert.",
+        ],
+        tensions: [
+          "Forge will kill the program if services utilization falls; Hearth will call that a measurement error.",
+        ],
+        confidence: 0.71,
+      },
+      {
+        agentId: "loom",
+        verdict:
+          "The week only works if the operating system changes: staffing math, on-call, and meeting load. A policy memo is not an operating system.",
+        findings: [
+          "Support cannot run 4×10 without a follow-the-sun or a paid coverage rotation.",
+          "Sales engineers already work customer calendars, not Northline calendars.",
+          "The previous no-meeting Wednesday failed because leaders booked around it.",
+        ],
+        tensions: [
+          "Loom needs a six-week roster pilot. Horizon wants a public date. Those are not the same move.",
+        ],
+        confidence: 0.84,
+      },
+      {
+        agentId: "hearth",
+        verdict:
+          "This is the highest-leverage people move available this year — if it is real. A fake four-day week will torch trust faster than staying at five.",
+        findings: [
+          "Exit interviews already cite 'always on' more than compensation.",
+          "Managers will be the silent failure point; they currently signal virtue by answering Slack on Friday.",
+          "Hiring copy can change in Q2 only after a live pilot, not a blog post.",
+        ],
+        tensions: [
+          "Hearth and Sentinel disagree on speed. Hearth says delay is how attrition wins.",
+        ],
+        confidence: 0.8,
+      },
+      {
+        agentId: "sentinel",
+        verdict:
+          "Second-order: work migrates into Sunday night, contractors become a shadow fifth day, and enterprise QBR weeks collapse the model.",
+        findings: [
+          "Three enterprise QBRs already cluster on Thursdays. A Friday-off model collides with them.",
+          "Legal and finance close cycles are calendar-bound, not sprint-bound.",
+          "If managers keep Slack badges green on the off-day, the policy is already dead.",
+        ],
+        tensions: [
+          "Sentinel wants kill criteria published before the all-hands. Hearth worries that looks like hedging.",
+        ],
+        confidence: 0.86,
+      },
+      {
+        agentId: "horizon",
+        verdict:
+          "Sequence coverage, then culture, then brand. Reverse that order and you buy a headline you cannot operate.",
+        findings: [
+          "Now is two squads plus support roster math — not a company default.",
+          "Next is manager practice and customer comms, gated on SLA evidence.",
+          "Later is the default, the hiring story, and follow-the-sun. Not a Q2 all-hands promise.",
+        ],
+        tensions: [
+          "The CEO will want a date. Horizon's job is to give a date for the pilot, not the default.",
+        ],
+        confidence: 0.82,
+      },
+    ],
+    moves: [
+      {
+        id: "fd-1",
+        title: "Pilot two product squads on 4×8 with a published coverage roster",
+        outcome:
+          "Enable two squads to run a real four-day week so that output, SLA, and after-hours Slack can be measured against a control group.",
+        horizon: "now",
+        dimensions: ["operations", "people", "risk"],
+        effort: "M",
+        impact: 8,
+        dependencies: ["Named coverage owners", "SLA dashboard"],
+        metric: "Off-day Slack by managers < 10% of baseline; sprint throughput ±8%.",
+      },
+      {
+        id: "fd-2",
+        title: "Redesign support and SE coverage before any default is named",
+        outcome:
+          "Enable enterprise accounts to keep 24-hour response so that the week cannot be vetoed by a single missed ticket.",
+        horizon: "now",
+        dimensions: ["customer", "operations", "risk"],
+        effort: "L",
+        impact: 9,
+        dependencies: ["Follow-the-sun or paid rotation budget"],
+        metric: "P1 response stays inside SLA for 6 consecutive weeks.",
+      },
+      {
+        id: "fd-3",
+        title: "Manager contract: off-day is off, including green badges",
+        outcome:
+          "Enable managers to model the week so that ICs do not treat Friday as unpaid on-call.",
+        horizon: "next",
+        dimensions: ["people", "risk"],
+        effort: "S",
+        impact: 7,
+        dependencies: ["Pilot evidence", "Exec participation"],
+        metric: "Manager off-day presence in Slack/email down 80%.",
+      },
+      {
+        id: "fd-4",
+        title: "Customer letter only after coverage is boring",
+        outcome:
+          "Enable CSMs to describe coverage, not culture, so that buyers do not rewrite the risk register.",
+        horizon: "next",
+        dimensions: ["customer", "revenue"],
+        effort: "S",
+        impact: 6,
+        dependencies: ["SLA evidence from Now"],
+        metric: "No expansion deals stalled citing 'coverage risk'.",
+      },
+      {
+        id: "fd-5",
+        title: "Company default, then hiring narrative",
+        outcome:
+          "Enable recruiting to tell a true story so that the week becomes a hiring advantage instead of a rumor.",
+        horizon: "later",
+        dimensions: ["people", "optionality"],
+        effort: "M",
+        impact: 8,
+        dependencies: ["Two quarters of pilot data"],
+        metric: "Offer-accept rate in IC roles +12pts vs. trailing year.",
+      },
+    ],
+    stakeholders: [
+      {
+        name: "CEO",
+        stance: "champion",
+        influence: 9,
+        need: "A date that can be said in public without becoming a hostage.",
+      },
+      {
+        name: "VP Customer Success",
+        stance: "resist",
+        influence: 8,
+        need: "A roster that survives QBR week and a named backup for each top-20 account.",
+      },
+      {
+        name: "Support leads",
+        stance: "block",
+        influence: 7,
+        need: "Either follow-the-sun hiring or a paid fifth-day rotation. Policy will not staff the queue.",
+      },
+      {
+        name: "Principal ICs",
+        stance: "champion",
+        influence: 6,
+        need: "Proof that Friday is not where the real decisions move.",
+      },
+      {
+        name: "Enterprise buyers (top 8)",
+        stance: "neutral",
+        influence: 8,
+        need: "Unchanged response times and the same named humans.",
+      },
+      {
+        name: "People ops",
+        stance: "support",
+        influence: 5,
+        need: "A written manager contract and a kill switch they can actually pull.",
+      },
+    ],
+    secondOrder: [
+      {
+        trigger: "Friday becomes the official off-day",
+        consequence:
+          "Enterprise QBR clusters collide; Thursday becomes a 12-hour crush and quality drops where customers can see it.",
+        order: 2,
+        valence: "risk",
+      },
+      {
+        trigger: "Managers stay visible on the off-day",
+        consequence:
+          "ICs treat the policy as theater. Attrition among the people you meant to keep accelerates.",
+        order: 2,
+        valence: "risk",
+      },
+      {
+        trigger: "Coverage is redesigned first",
+        consequence:
+          "Follow-the-sun hiring becomes a genuine expansion option in EMEA, not a four-day side effect.",
+        order: 3,
+        valence: "opportunity",
+      },
+      {
+        trigger: "The week is announced before the roster exists",
+        consequence:
+          "A single missed P1 becomes the story. The program dies in a QBR, not in a retrospective.",
+        order: 3,
+        valence: "risk",
+      },
+    ],
+    tradeoffs: [
+      {
+        keep: "Enterprise SLA and named-human coverage",
+        give: "A company-wide default in H1, and any 'we work less' brand campaign",
+      },
+      {
+        keep: "A real off-day for ICs and managers",
+        give: "The current habit of using Slack presence as a proxy for commitment",
+      },
+      {
+        keep: "Honest kill criteria",
+        give: "The comfort of an irreversible all-hands promise",
+      },
+    ],
+    killCriteria: [
+      "P1 SLA missed two weeks in a row on a piloted team.",
+      "Off-day manager Slack volume remains above 25% of baseline after 30 days.",
+      "Services utilization drops more than 8% with no matching drop in overtime.",
+      "A top-8 account puts coverage in writing as a renewal risk.",
+    ],
+  },
+  {
+    id: "sample-sunset-native",
+    title: "Sunset native apps, go web-only",
+    thesis:
+      "Stop paying twice for the same product. The native apps are a distribution relic, not a moat — retire them on a customer-visible runway, not a surprise.",
+    source: "sample",
+    createdAt: "2026-01-20T10:00:00.000Z",
+    briefing: {
+      initiative:
+        "Deprecate iOS and Android native apps within 12 months and make the web app the only client.",
+      context:
+        "Consumer fintech, 2.4M MAU. Native apps are 38% of sessions but 61% of crash budget and 40% of client engineering. Web already has feature parity except biometric login and home-screen widgets. App Store rating 3.6. Push notifications drive 18% of weekly actives.",
+      planHorizon: "12m",
+      nonNegotiable: "Do not create a regulatory or trust incident around money movement.",
+    },
+    dimensions: [
+      {
+        id: "customer",
+        current: 7.1,
+        projected: 6.4,
+        summary:
+          "A minority of power users will feel punished. The median user will not notice if install, login, and push are rebuilt on the web.",
+      },
+      {
+        id: "revenue",
+        current: 6.0,
+        projected: 6.8,
+        summary:
+          "Client engineering time returns to growth surfaces. Store fees on in-app flows disappear. Churn risk is concentrated in the biometric cohort.",
+      },
+      {
+        id: "operations",
+        current: 3.8,
+        projected: 8.1,
+        summary:
+          "One client is an operating system. Three clients is a tax. This is the cleanest leverage move in the stack.",
+      },
+      {
+        id: "people",
+        current: 5.2,
+        projected: 6.0,
+        summary:
+          "Mobile specialists need a landing. If the landing is vague, they leave before the sunset and take the release knowledge with them.",
+      },
+      {
+        id: "risk",
+        current: 5.5,
+        projected: 5.0,
+        summary:
+          "Push, biometrics, and 'is this a real bank app' trust are the load-bearing native features. Money movement on a browser tab has a different fear profile.",
+      },
+      {
+        id: "optionality",
+        current: 4.4,
+        projected: 7.6,
+        summary:
+          "A single web client can ship weekly, enter new surfaces (desktop, embedded), and stop waiting on store review.",
+      },
+    ],
+    agents: [
+      {
+        agentId: "atlas",
+        verdict:
+          "The rating is already a warning. Users who stay in native are not loyalists; many are trapped by muscle memory and widgets.",
+        findings: [
+          "Session length is higher on web. Native is a launch habit, not a better product.",
+          "The biometric cohort is 11% of MAU and 29% of monthly money movement.",
+          "A hard cutoff without a PWA install path will look like abandonment, not simplification.",
+        ],
+        tensions: [
+          "Atlas wants a six-month overlap. Loom wants the native freeze much sooner to stop dual-running features.",
+        ],
+        confidence: 0.77,
+      },
+      {
+        agentId: "forge",
+        verdict:
+          "The P&L case is not the store fee. It is the 14 engineers no longer cloned across two store pipelines.",
+        findings: [
+          "Dual-running a payment sheet through store review adds 11 days median to every sensitive release.",
+          "Churn of the biometric cohort at 15% would erase a year of engineering savings. That cohort needs a first-class web biometric path.",
+          "Do not announce cost savings publicly. Announce a faster, safer product.",
+        ],
+        tensions: [
+          "Forge will not fund a native 'maintenance forever' team. Sentinel wants one through the tax year.",
+        ],
+        confidence: 0.8,
+      },
+      {
+        agentId: "loom",
+        verdict:
+          "Freeze native feature work in 30 days. Every dual-shipped screen after that is a gift to the status quo.",
+        findings: [
+          "Crash budget is already dominated by OS-version matrix, not product bugs.",
+          "Release trains cannot stay coupled; web will always wait if native is 'also shipping'.",
+          "Support macros, store listing, and deep links are a project, not a footnote.",
+        ],
+        tensions: [
+          "Loom's freeze date collides with a Q2 widget the growth team already promised.",
+        ],
+        confidence: 0.88,
+      },
+      {
+        agentId: "hearth",
+        verdict:
+          "Name the landing for mobile engineers in the same meeting as the sunset. Silence here is how you lose the people who know the edge cases.",
+        findings: [
+          "Four engineers identify as 'mobile' in a market that still pays a premium for that identity.",
+          "The web platform team is already at capacity; dumping people without a mission creates a second attrition event.",
+          "Support will take the emotional load of the sunset. Brief them like a product launch.",
+        ],
+        tensions: [
+          "Hearth wants retention packages. Forge wants the savings intact.",
+        ],
+        confidence: 0.74,
+      },
+      {
+        agentId: "sentinel",
+        verdict:
+          "The scary version is not a one-star review. It is a phishing window: 'the app disappeared, click this instead.'",
+        findings: [
+          "Store presence is a trust badge for a money product, even with a 3.6 rating.",
+          "Push permission on web is weaker; weekly active from push will drop unless you rebuild the habit on email and SMS with consent.",
+          "A regulator will ask whether customers were given a fair runway. Ninety days is not fair. Nine months is.",
+        ],
+        tensions: [
+          "Sentinel wants the store listing to linger as a redirect. Loom wants it gone so the dual-client tax actually ends.",
+        ],
+        confidence: 0.83,
+      },
+      {
+        agentId: "horizon",
+        verdict:
+          "Now is freeze and parity on biometrics. Next is a loud, boring runway. Later is deletion. Do not skip the boring part.",
+        findings: [
+          "A surprise sunset of a money app is a trust event. Treat it like a migration, not a changelog.",
+          "Widgets and push need replacements before the store page says deprecated.",
+          "Deletion is a date with a redirect, not a hope.",
+        ],
+        tensions: [
+          "Growth will lobby to keep the widget. Horizon's job is to price that lobby against the freeze.",
+        ],
+        confidence: 0.81,
+      },
+    ],
+    moves: [
+      {
+        id: "sn-1",
+        title: "Freeze native features; web-only for all new work",
+        outcome:
+          "Enable one client team to ship weekly so that the company stops paying a dual-release tax.",
+        horizon: "now",
+        dimensions: ["operations", "optionality"],
+        effort: "S",
+        impact: 8,
+        dependencies: ["Exec written freeze"],
+        metric: "Zero new native features after day 30.",
+      },
+      {
+        id: "sn-2",
+        title: "Web biometrics + installable PWA that feels like an app",
+        outcome:
+          "Enable the money-movement cohort to keep a trusted, fast login so that sunset does not equal churn.",
+        horizon: "now",
+        dimensions: ["customer", "risk", "revenue"],
+        effort: "L",
+        impact: 9,
+        dependencies: ["Platform WebAuthn work", "Store-like install tutorial"],
+        metric: "Biometric web login success ≥ native baseline within 1.2s p50.",
+      },
+      {
+        id: "sn-3",
+        title: "Nine-month deprecation runway in-product and in-store",
+        outcome:
+          "Enable customers to migrate on their schedule so that the sunset cannot be framed as abandonment.",
+        horizon: "next",
+        dimensions: ["customer", "risk"],
+        effort: "M",
+        impact: 7,
+        dependencies: ["PWA install path", "Support playbooks"],
+        metric: "Native MAU down 70% before store listing is removed.",
+      },
+      {
+        id: "sn-4",
+        title: "Rebuild the weekly habit without store push",
+        outcome:
+          "Enable consented email/SMS and web push so that weekly actives do not fall off a cliff with the APNs certificate.",
+        horizon: "next",
+        dimensions: ["revenue", "customer"],
+        effort: "M",
+        impact: 7,
+        dependencies: ["Consent redesign", "Copy that does not sound like spam"],
+        metric: "Push-attributed WAU recovered to 80% of native baseline.",
+      },
+      {
+        id: "sn-5",
+        title: "Delete the native clients; listing becomes a signed redirect",
+        outcome:
+          "Enable a single client forever so that crash budget, review, and dual QA disappear.",
+        horizon: "later",
+        dimensions: ["operations", "optionality", "risk"],
+        effort: "M",
+        impact: 8,
+        dependencies: ["Runway complete", "Legal + comms packet"],
+        metric: "Native codepaths unowned; store listing is redirect-only.",
+      },
+    ],
+    stakeholders: [
+      {
+        name: "Head of Product",
+        stance: "champion",
+        influence: 8,
+        need: "A freeze that growth cannot quietly undo.",
+      },
+      {
+        name: "Mobile engineers",
+        stance: "resist",
+        influence: 6,
+        need: "A named mission on web platform, not 'we'll find something'.",
+      },
+      {
+        name: "Growth",
+        stance: "block",
+        influence: 7,
+        need: "A widget and push story that does not vaporize weekly actives.",
+      },
+      {
+        name: "Risk & compliance",
+        stance: "neutral",
+        influence: 9,
+        need: "A documented customer runway and an anti-phishing comms plan.",
+      },
+      {
+        name: "Support",
+        stance: "support",
+        influence: 5,
+        need: "Macros, dates, and a way to tell a scared customer this is still their bank.",
+      },
+    ],
+    secondOrder: [
+      {
+        trigger: "Store listing disappears",
+        consequence:
+          "Phishing kits impersonate the migration. Trust damage outruns any engineering save.",
+        order: 2,
+        valence: "risk",
+      },
+      {
+        trigger: "Native is frozen but not deleted",
+        consequence:
+          "A zombie app accumulates CVEs and one-star reviews while still carrying the brand.",
+        order: 2,
+        valence: "risk",
+      },
+      {
+        trigger: "One client, weekly ship",
+        consequence:
+          "Embedded web surfaces (partners, desktop) become cheap. Distribution stops meaning 'two stores'.",
+        order: 3,
+        valence: "opportunity",
+      },
+    ],
+    tradeoffs: [
+      {
+        keep: "A trusted login for money movement",
+        give: "Home-screen widgets and the identity of being 'an app in the store'",
+      },
+      {
+        keep: "One release train",
+        give: "The growth team's promised native widget in Q2",
+      },
+      {
+        keep: "A fair customer runway",
+        give: "The fastest possible engineering save",
+      },
+    ],
+    killCriteria: [
+      "Web biometric login success below 95% of native after 60 days of GA.",
+      "Money-movement volume in the former native cohort drops >12% month-over-month.",
+      "A regulator or major partner flags the sunset as inadequate notice.",
+      "Critical security issue in the PWA with no native fallback still in market.",
+    ],
+  },
+  {
+    id: "sample-eu-entry",
+    title: "EU entry for Harbor Pay",
+    thesis:
+      "Enter the EU through one regulated wedge and one country, not a flag on the website. The product is ready; the institution is not.",
+    source: "sample",
+    createdAt: "2026-04-02T10:00:00.000Z",
+    briefing: {
+      initiative:
+        "Launch Harbor Pay in the European Union within 12 months, starting with the existing US SMB payouts product.",
+      context:
+        "US fintech, $42M ARR, strong product-market fit with US marketplaces paying sellers. Inbound EU demand from 40 marketplace customers. No EMI license, no local entity, no PSD2 story. Competitors already live in IE/NL. Sales is quoting 'soon' in decks.",
+      planHorizon: "12m",
+      nonNegotiable: "No unlicensed money movement. No quoting dates sales cannot keep.",
+    },
+    dimensions: [
+      {
+        id: "customer",
+        current: 3.2,
+        projected: 7.0,
+        summary:
+          "The demand is inbound and specific: pay EU sellers without a second processor. That is a real job to be done, not a TAM slide.",
+      },
+      {
+        id: "revenue",
+        current: 5.0,
+        projected: 6.4,
+        summary:
+          "Year-one revenue is a wedge, not a region. The hidden win is protecting US accounts that will churn if EU payouts stay awkward.",
+      },
+      {
+        id: "operations",
+        current: 7.2,
+        projected: 4.6,
+        summary:
+          "Ops load will get worse before it gets better: licensing, banking partners, support hours, VAT, languages.",
+      },
+      {
+        id: "people",
+        current: 6.1,
+        projected: 5.4,
+        summary:
+          "A thin US team cannot 'also do Europe'. This creates a second company inside the first if you refuse to hire locally.",
+      },
+      {
+        id: "risk",
+        current: 7.4,
+        projected: 5.1,
+        summary:
+          "Licensing, safeguarding, and sales-led promises are the blast radius. A premature flag is an enforcement story.",
+      },
+      {
+        id: "optionality",
+        current: 4.0,
+        projected: 8.2,
+        summary:
+          "A real EU rail is a platform. Once licensed, more products can ride. Until then, every extra country is a vanity metric.",
+      },
+    ],
+    agents: [
+      {
+        agentId: "atlas",
+        verdict:
+          "Do not launch 'Europe'. Launch payouts to Irish and Dutch sellers for the 40 customers already asking — and say no to everyone else.",
+        findings: [
+          "The job is 'pay my EU sellers', not 'be a European neobank'.",
+          "Marketplace admins will forgive a country list. They will not forgive a date that slips twice.",
+          "Localization is secondary to payout reliability and a local support hour.",
+        ],
+        tensions: [
+          "Sales wants a map with 27 flags. Atlas wants two countries and a waiting list.",
+        ],
+        confidence: 0.82,
+      },
+      {
+        agentId: "forge",
+        verdict:
+          "Price this as account defense plus a paid EU rail, not as a land-grab. The first $4M is concentrated in existing logos.",
+        findings: [
+          "Eight US customers represent 70% of inbound EU payout volume.",
+          "A partner-led license is slower to margin but faster to revenue than a full EMI build.",
+          "If sales keeps quoting Europe for free, you will never collect for the rail.",
+        ],
+        tensions: [
+          "Forge wants an EU SKU. Sales wants it bundled to close US expansions.",
+        ],
+        confidence: 0.76,
+      },
+      {
+        agentId: "loom",
+        verdict:
+          "Stand up a Dublin-hours support pod and a banking-partner operations runbook before marketing writes a sentence.",
+        findings: [
+          "US support hours do not cover seller crises at 09:00 CET.",
+          "Payout failures need a local bank contact, not a Slack emoji in San Francisco.",
+          "Every extra country multiplies KYC variants. Two is already a system.",
+        ],
+        tensions: [
+          "Loom's hiring plan is a quarter slower than Horizon's 'announce in Q3' pressure.",
+        ],
+        confidence: 0.8,
+      },
+      {
+        agentId: "hearth",
+        verdict:
+          "Hire the EU lead before the license lands. A US PM 'owning Europe' from Pacific time is how this becomes a side quest.",
+        findings: [
+          "No one on staff has shipped a licensed payouts product in the EU.",
+          "The people who know PSD2 are not going to join a company that still says 'soon' in sales decks.",
+          "Compensation bands will have to stretch. Pretending otherwise is how you hire tourists.",
+        ],
+        tensions: [
+          "Hearth wants a local GM. The CEO wants 'a small pod we can steer from HQ'.",
+        ],
+        confidence: 0.73,
+      },
+      {
+        agentId: "sentinel",
+        verdict:
+          "The mortal risk is not competition. It is selling a regulated product with a partner license you do not yet have, in writing, in a deck.",
+        findings: [
+          "Sales decks already imply EU availability. That is a live compliance issue, not a messaging issue.",
+          "Safeguarding and complaint handling are not a legal appendix. They are product surfaces.",
+          "A 27-country launch is how you get the worst of every regime and the attention of none of the good partners.",
+        ],
+        tensions: [
+          "Sentinel wants decks cleaned this week. Sales calls that a pipeline cut.",
+        ],
+        confidence: 0.9,
+      },
+      {
+        agentId: "horizon",
+        verdict:
+          "Now is license path plus deck hygiene. Next is two countries and eight logos. Later is a passport. The map is not the work.",
+        findings: [
+          "A partner EMI can put money in motion in a year. A self-license is a three-year company.",
+          "Public dates belong to the wedge, not to 'Europe'.",
+          "Kill the waiting-list-as-strategy. A waiting list without a license is a liability.",
+        ],
+        tensions: [
+          "Horizon will not give sales a Q3 'Europe' headline. Horizon will give eight customers a private beta date.",
+        ],
+        confidence: 0.85,
+      },
+    ],
+    moves: [
+      {
+        id: "eu-1",
+        title: "Strip EU claims from every sales surface this week",
+        outcome:
+          "Enable the company to stop implying unlicensed availability so that the first EU move is not an enforcement letter.",
+        horizon: "now",
+        dimensions: ["risk", "revenue"],
+        effort: "S",
+        impact: 9,
+        dependencies: ["Sales leadership written order"],
+        metric: "Zero public or deck claims of EU availability without a dated private-beta caveat.",
+      },
+      {
+        id: "eu-2",
+        title: "Choose partner-license path and two-country wedge",
+        outcome:
+          "Enable payouts in IE and NL so that the eight loudest customers can stop threatening a second processor.",
+        horizon: "now",
+        dimensions: ["customer", "optionality", "risk"],
+        effort: "L",
+        impact: 9,
+        dependencies: ["Partner shortlist", "Legal term sheet"],
+        metric: "Signed partner path; public country list is exactly two.",
+      },
+      {
+        id: "eu-3",
+        title: "Hire an EU lead and a Dublin-hours support pod",
+        outcome:
+          "Enable the wedge to be operated in local time so that failures are handled like a product, not a jet-lagged exception.",
+        horizon: "next",
+        dimensions: ["people", "operations", "customer"],
+        effort: "L",
+        impact: 8,
+        dependencies: ["Comp bands", "Entity or EOR"],
+        metric: "EU lead seated; support coverage 08:00–18:00 CET on business days.",
+      },
+      {
+        id: "eu-4",
+        title: "Private beta with eight existing logos, paid EU rail",
+        outcome:
+          "Enable those marketplaces to pay EU sellers on Harbor so that US expansions stop stalling on geography.",
+        horizon: "next",
+        dimensions: ["customer", "revenue"],
+        effort: "M",
+        impact: 8,
+        dependencies: ["License path live", "Support pod"],
+        metric: "Eight logos live; zero unsolicited country expansion.",
+      },
+      {
+        id: "eu-5",
+        title: "Passport only after the wedge is boring",
+        outcome:
+          "Enable a wider country list so that 'Europe' becomes an earned word instead of a slide.",
+        horizon: "later",
+        dimensions: ["optionality", "revenue"],
+        effort: "L",
+        impact: 7,
+        dependencies: ["Two-country reliability for two quarters"],
+        metric: "Payout success ≥ US baseline for 60 days before country three.",
+      },
+    ],
+    stakeholders: [
+      {
+        name: "CEO",
+        stance: "champion",
+        influence: 9,
+        need: "A story that is true in a board meeting and in a regulator meeting.",
+      },
+      {
+        name: "VP Sales",
+        stance: "resist",
+        influence: 8,
+        need: "Something they can say besides 'not yet' to the eight angry logos.",
+      },
+      {
+        name: "General counsel",
+        stance: "block",
+        influence: 9,
+        need: "Deck hygiene now and a partner path that is actually licensed.",
+      },
+      {
+        name: "Existing EU-demand customers",
+        stance: "champion",
+        influence: 7,
+        need: "A private beta with a date, not a region page.",
+      },
+      {
+        name: "US support",
+        stance: "neutral",
+        influence: 4,
+        need: "Not to inherit 09:00 CET failures on a Pacific rotation.",
+      },
+    ],
+    secondOrder: [
+      {
+        trigger: "Sales keeps saying 'Europe soon'",
+        consequence:
+          "A customer or a competitor forwards the deck. The first EU headline is a compliance story.",
+        order: 2,
+        valence: "risk",
+      },
+      {
+        trigger: "Wedge ships in two countries",
+        consequence:
+          "Every other country becomes a sales objection. Discipline here is the product.",
+        order: 2,
+        valence: "risk",
+      },
+      {
+        trigger: "A real rail exists",
+        consequence:
+          "US marketplaces stop evaluating a second processor. The EU product pays for itself as account defense.",
+        order: 3,
+        valence: "opportunity",
+      },
+    ],
+    tradeoffs: [
+      {
+        keep: "Licensed, boring money movement",
+        give: "A 27-country map and a Q3 'Europe launch' headline",
+      },
+      {
+        keep: "The eight customers already in house",
+        give: "Greenfield EU logos in year one",
+      },
+      {
+        keep: "A local lead and local hours",
+        give: "The fantasy of Europe as a side pod in San Francisco",
+      },
+    ],
+    killCriteria: [
+      "Any unlicensed payout, even a 'test'.",
+      "A public date for 'Europe' rather than for a two-country private beta.",
+      "Partner path unsigned after 120 days with no alternative filed.",
+      "Support cannot cover CET business hours at launch.",
+    ],
+  },
+];
+
+export const SAMPLE_CARDS = SAMPLES.map((s) => ({
+  id: s.id,
+  title: s.title,
+  thesis: s.thesis,
+  planHorizon: s.briefing.planHorizon,
+}));
